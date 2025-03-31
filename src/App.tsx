@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Trash2, Plus, Crown } from 'lucide-react';
+import banditUrl from './raccoons/bandit.jpeg';
+import rascalUrl from './raccoons/rascal.jpeg';
+import scoutUrl from './raccoons/scout.jpeg';
+import shadowUrl from './raccoons/shadow.jpeg';
+import midnightUrl from './raccoons/midnight.jpeg';
+import dustyUrl from './raccoons/dusty.jpeg';
+import scavengerUrl from './raccoons/scavenger.jpeg';
+import nibblesUrl from './raccoons/nibbles.jpeg';
+import whiskersUrl from './raccoons/whiskers.jpeg';
+import rockyUrl from './raccoons/rocky.jpeg';
 
 interface Raccoon {
   id: number;
@@ -18,16 +28,16 @@ function App() {
 
   const baseRaccoonCost = 10;
   const raccoonProfiles = [
-    { name: 'Bandit', imageUrl: '/raccoons/bandit.jpeg' },
-    { name: 'Rascal', imageUrl: '/raccoons/rascal.jpeg' },
-    { name: 'Scout', imageUrl: '/raccoons/scout.jpeg' },
-    { name: 'Shadow', imageUrl: '/raccoons/shadow.jpeg' },
-    { name: 'Midnight', imageUrl: '/raccoons/midnight.jpeg' },
-    { name: 'Dusty', imageUrl: '/raccoons/dusty.jpeg' },
-    { name: 'Scavenger', imageUrl: '/raccoons/scavenger.jpeg' },
-    { name: 'Nibbles', imageUrl: '/raccoons/nibbles.jpeg' },
-    { name: 'Whiskers', imageUrl: '/raccoons/whiskers.jpeg' },
-    { name: 'Rocky', imageUrl: '/raccoons/rocky.jpeg' }
+    { name: 'Bandit', imageUrl: banditUrl },
+    { name: 'Rascal', imageUrl: rascalUrl },
+    { name: 'Scout', imageUrl: scoutUrl },
+    { name: 'Shadow', imageUrl: shadowUrl },
+    { name: 'Midnight', imageUrl: midnightUrl },
+    { name: 'Dusty', imageUrl: dustyUrl },
+    { name: 'Scavenger', imageUrl: scavengerUrl },
+    { name: 'Nibbles', imageUrl: nibblesUrl },
+    { name: 'Whiskers', imageUrl: whiskersUrl },
+    { name: 'Rocky', imageUrl: rockyUrl }, 
   ];
 
   const collectTrash = () => {
