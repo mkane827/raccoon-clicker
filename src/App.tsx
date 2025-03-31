@@ -62,6 +62,14 @@ function App() {
     }
   };
 
+  const upgradeRaccoon = (id: number) => {
+    setRaccoons(prev => 
+      prev.map(raccoon => 
+        raccoon.id === id ? { ...raccoon, trashPerSecond: raccoon.trashPerSecond + 0.5 } : raccoon
+      )
+    );
+  };
+
   // Automatic trash collection
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,7 +88,7 @@ function App() {
       if (raccoons.length > 0 && Math.random() < 0.1) { // 10% chance every 5 seconds
         const bonusAmount = Math.floor(Math.random() * 10) + 5;
         const luckyRaccoon = raccoons[Math.floor(Math.random() * raccoons.length)];
-        setBonusMessage(`${luckyRaccoon.name} found a treasure! +${bonusAmount} trash`);
+        setBonusMessage(`${luckyRaccoon.name} #${luckyRaccoon.id} found a treasure! +${bonusAmount} trash`);
         setTrash(prev => prev + bonusAmount);
         setShowBonus(true);
         setTimeout(() => setShowBonus(false), 3000);
@@ -144,6 +152,11 @@ function App() {
                   <h3 className="font-bold">{raccoon.name}</h3>
                   <p className="text-sm text-gray-300">Collects {raccoon.trashPerSecond} trash/second</p>
                 </div>
+
+                <button className="bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full text-sm" onClick={() => upgradeRaccoon(raccoon.id)}>
+                  Upgrade
+                </button>
+
                 <div className="bg-gray-500 px-3 py-1 rounded-full text-sm">
                   #{raccoon.id}
                 </div>
