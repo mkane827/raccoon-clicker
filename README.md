@@ -1,0 +1,2 @@
+# Vibe Coding
+It's all the rage and I wanted to try it. So here's some vibe coding for a clicker game where raccoons gather trash. It's not very good and I'm not a fan that it used TailwindCSS, but here it is. I used Gemini/Imagen 3 to generate the images. 
