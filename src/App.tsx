@@ -99,77 +99,67 @@ function App() {
   }, [raccoons]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-800 to-gray-900 text-white p-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Raccoon Trash Collectors</h1>
-          <div className="text-2xl mb-4">
-            Trash Collected: {Math.floor(trash)}
+    <div className="container">
+      <div className="header">
+        <h1 className="title">Raccoon Trash Collectors</h1>
+        <div className="trash-count">Trash Collected: {Math.floor(trash)}</div>
+        
+        <button
+          onClick={collectTrash}
+          className="collect-button"
+        >
+          <Trash2 className="icon" />
+          Collect Trash
+        </button>
+
+        {showBonus && (
+          <div className="bonus-message">
+            <Crown className="icon" />
+            {bonusMessage}
           </div>
-          
+        )}
+      </div>
+
+      <div className="hire-section">
+        <div className="hire-header">
+          <h2>Hire Raccoons</h2>
           <button
-            onClick={collectTrash}
-            className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 active:scale-95 mb-4"
+            onClick={hireRaccoon}
+            disabled={trash < baseRaccoonCost * (raccoons.length + 1)}
+            className="hire-button"
           >
-            <Trash2 className="inline-block mr-2" />
-            Collect Trash
+            <Plus className="icon" />
+            Hire ({baseRaccoonCost * (raccoons.length + 1)} trash)
           </button>
-
-          {showBonus && (
-            <div className="fixed top-1/4 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-black p-4 rounded-lg shadow-lg animate-bounce">
-              <Crown className="inline-block mr-2" />
-              {bonusMessage}
-            </div>
-          )}
         </div>
 
-        <div className="bg-gray-700 rounded-lg p-6 mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">Hire Raccoons</h2>
-            <button
-              onClick={hireRaccoon}
-              disabled={trash < baseRaccoonCost * (raccoons.length + 1)}
-              className={`flex items-center px-4 py-2 rounded ${
-                trash >= baseRaccoonCost * (raccoons.length + 1)
-                  ? 'bg-blue-600 hover:bg-blue-700'
-                  : 'bg-gray-600 cursor-not-allowed'
-              }`}
-            >
-              <Plus className="mr-2" />
-              Hire ({baseRaccoonCost * (raccoons.length + 1)} trash)
-            </button>
-          </div>
-
-          <div className="grid gap-4">
-            {raccoons.map(raccoon => (
-              <div key={raccoon.id} className="bg-gray-600 p-4 rounded-lg flex items-center gap-4">
-                <img 
-                  src={raccoon.imageUrl} 
-                  alt={raccoon.name}
-                  className="w-16 h-16 rounded-full object-cover bg-gray-500"
-                />
-                <div className="flex-1">
-                  <h3 className="font-bold">{raccoon.name}</h3>
-                  <p className="text-sm text-gray-300">Collects {raccoon.trashPerSecond} trash/second</p>
-                </div>
-
-                <button className="bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full text-sm" onClick={() => upgradeRaccoon(raccoon.id)}>
-                  Upgrade
-                </button>
-
-                <div className="bg-gray-500 px-3 py-1 rounded-full text-sm">
-                  #{raccoon.id}
-                </div>
+        <div className="raccoon-list">
+          {raccoons.map(raccoon => (
+            <div key={raccoon.id} className="raccoon-card">
+              <img 
+                src={raccoon.imageUrl} 
+                alt={raccoon.name}
+                className="raccoon-image"
+              />
+              <div className="raccoon-info">
+                <h3 className="raccoon-name">{raccoon.name}</h3>
+                <p className="raccoon-stats">Collects {raccoon.trashPerSecond} trash/second</p>
               </div>
-            ))}
-          </div>
 
-          {raccoons.length === 0 && (
-            <p className="text-center text-gray-400 py-4">
-              No raccoons hired yet. Hire your first raccoon!
-            </p>
-          )}
+              <button className="upgrade-button" onClick={() => upgradeRaccoon(raccoon.id)}>
+                Upgrade
+              </button>
+
+              <div className="raccoon-id">#{raccoon.id}</div>
+            </div>
+          ))}
         </div>
+
+        {raccoons.length === 0 && (
+          <p className="text-center text-gray-400 py-4">
+            No raccoons hired yet. Hire your first raccoon!
+          </p>
+        )}
       </div>
     </div>
   );

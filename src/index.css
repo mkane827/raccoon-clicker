@@ -1,3 +1,208 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+  background: linear-gradient(to bottom, #2d3748, #1a202c);
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* Added font-size and line-height for better readability */
+  font-size: 1rem; /* Default font size */
+  line-height: 1.5; /* Default line height */
+}
+
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  /* Added tracking-tight for tighter letter spacing */
+  letter-spacing: -0.025em;
+}
+
+.trash-count {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.collect-button {
+  /* bg-green-600 */
+  background-color: #16a34a; /* Equivalent to bg-green-600 */
+  /* hover:bg-green-700 */
+  /* text-white */
+  color: white;
+  /* py-4 px-8 */
+  padding: 1rem 2rem; /* py-4 (1rem) px-8 (2rem) */
+  /* rounded-full */
+  border-radius: 9999px;
+  /* transition-all */
+  transition: all 0.2s;
+  /* transform hover:scale-105 */
+  /* active:scale-95 */
+  /* mb-4 */
+  margin-bottom: 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  text-size-adjust: 100%;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  display: inline-block;
+  appearance: button;;
+}
+
+.collect-button:hover {
+  /* hover:bg-green-700 */
+  background-color: #15803d; /* Equivalent to hover:bg-green-700 */
+  /* hover:scale-105 */
+  transform: scale(1.05);
+}
+
+.collect-button:active {
+  /* active:scale-95 */
+  transform: scale(0.95);
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.bonus-message {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ecc94b;
+  color: black;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: bounce 1s infinite;
+  /* Added font-medium for a slightly bolder look */
+  font-weight: 500;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.hire-section {
+  background-color: #4a5568;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.hire-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.hire-button {
+  background-color: #3182ce;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  /* Added font-medium for a slightly bolder look */
+  font-weight: 500;
+}
+
+.hire-button:hover {
+  background-color: #2b6cb0;
+}
+
+.hire-button:disabled {
+  background-color: #718096;
+  cursor: not-allowed;
+}
+
+.raccoon-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.raccoon-card {
+  background-color: #2d3748;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.raccoon-image {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  background-color: #4a5568;
+}
+
+.raccoon-info {
+  flex: 1;
+}
+
+.raccoon-name {
+  font-weight: bold;
+  /* Added font-medium for a slightly bolder look */
+  font-weight: 500;
+}
+
+.raccoon-stats {
+  font-size: 0.875rem;
+  color: #a0aec0;
+}
+
+.upgrade-button {
+  background-color: #ecc94b;
+  color: black;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  /* Added font-medium for a slightly bolder look */
+  font-weight: 500;
+}
+
+.upgrade-button:hover {
+  background-color: #d69e2e;
+}
+
+.raccoon-id {
+  background-color: #4a5568;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
